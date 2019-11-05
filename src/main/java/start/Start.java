@@ -4,13 +4,17 @@ package start;
 
 
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 import logika.*;
 import uiText.TextoveRozhrani;
 
 import java.io.FileNotFoundException;
 
 
-public class    Start
+public class Start extends Application
 {
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -24,6 +28,14 @@ public class    Start
         } else {
            ui.hrajZeSoubouru(args[0]);
         } */
+
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/scena.fxml"));
+        Pa  rent rootComponent = loader.load();
 
     }
 }
