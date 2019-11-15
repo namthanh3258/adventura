@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -59,8 +60,8 @@ public class Controller {
 
         }
         else AlertBox.zobrazAlertBox("Oznámení",
-                "V oblasti se stale nachazi nejake NPC, \n" +
-                        "abys kolem nich mohl projit, musis ho porazit.");
+                "V oblasti se stále nachází nějaké NPC, \n" +
+                        "abys mohl projít do další lokace, musíš ho porazit.");
 
 
        // pridejPredmety(prostor);
@@ -71,6 +72,7 @@ public class Controller {
         for (Prostor p : prostor.getVychody()) {
             HBox vychod = new HBox();
             vychod.setSpacing(10);
+            vychod.setPadding(new Insets(3,3,3,3));
             Label nazevProstoru = new Label(p.getNazev());
 
             ImageView vychodImageView = new ImageView();
