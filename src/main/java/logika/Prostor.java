@@ -119,9 +119,14 @@ public class Prostor {
      * @return Dlouhý popis prostoru
      */
     public String dlouhyPopis() {
-        return "Jsi v mistnosti/prostoru " + popis + ".\n";
-               // + popisVychodu() + "\n"
-               // + popisVeci() ;
+        return "Jsi v mistnosti/prostoru " + popis + ".\n"
+                + popisVychodu() + "\n"
+                + popisVeci() + "\n"
+                + popisNpc();
+    }
+
+    public String getPopis() {
+        return popis;
     }
 
     public String kratkyPopis(){
@@ -265,6 +270,8 @@ public class Prostor {
      */
 
     public NPC odstranNpc (String nazevNpc) {return npcka.remove(nazevNpc);}
+
+
 
     /*
     public Map<String, NPC> getNpc() {

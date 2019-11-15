@@ -4,25 +4,32 @@ package start;
 
 
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import logika.*;
 import uiText.TextoveRozhrani;
 
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 
 public class Start extends Application
 {
 
     public static void main(String[] args) throws FileNotFoundException {
-        
-        IHra hra = new Hra();
-        TextoveRozhrani ui = new TextoveRozhrani(hra);
-        ui.hraj();
 
+        if(args.length > 0 && args[0].equals("text")) {
+            IHra hra = new Hra();
+            TextoveRozhrani ui = new TextoveRozhrani(hra);
+            ui.hraj();
+        } else {
+            launch(args);
+        }
        /* if(args.length == 0){// automaticke hrani
             ui.hraj();
         } else {
@@ -35,7 +42,20 @@ public class Start extends Application
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/scena.fxml"));
-        Pa  rent rootComponent = loader.load();
+        Parent rootComponent = loader.load();
 
+        Scene scene = new Scene(rootComponent);
+        primaryStage.setScene(scene);
+
+
+        IHra hra = new Hra();
+        Controller controller = loader.getController();
+        controller.setHra(hra);
+
+        primaryStage.setTitle("Nazev hry");
+        InputStream iconStream = getClass().getResourceAsStream("/ikona.png");
+        Image icon = new Image(iconStream);
+        primaryStage.getIcons().add(icon);
+        primaryStage.show();
     }
 }

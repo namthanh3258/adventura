@@ -33,7 +33,7 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor kralovstvi = new Prostor("kralovstvi","království, ve kterém žíjes a odkud byla unesena princezna");
+        Prostor kralovstvi = new Prostor("kralovstvi","království, ve kterém žíješ a odkud byla unesena princezna");
         Prostor louka = new Prostor("louka", "zarostlá louka");
         Prostor les = new Prostor("les","obyčejný les, ve kterém se mohou nacházet zvířata");
         Prostor vchodJeskyne = new Prostor("vchod_jeskyne","stará a plesnivá jeskyně, u vchodu leží velký kotlik, ze kterého se kouří");
