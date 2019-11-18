@@ -109,6 +109,10 @@ public class Hra implements IHra {
      public HerniPlan getHerniPlan(){
         return herniPlan;
      }
+
+     public Batoh getBatoh() {
+        return batoh;
+    }
     
 }
 

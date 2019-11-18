@@ -45,13 +45,38 @@
                     <VBox fx:id="vychody" styleClass="text-maly"/>
                 </VBox>
                 <VBox  GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="kontejner">
-                    <Label text="Předměty" styleClass="nadpis"/>
-                    <VBox fx:id="seznamPredmetuVMistnosti"/>
+                    <Label text="NPC" styleClass="nadpis"/>
+                    <VBox fx:id="npcVProstoru" styleClass="text-maly"/>
                 </VBox>
 
 
             </GridPane>
         </left>
+        <right>
+            <GridPane vgap="10">
+                <rowConstraints>
+                    <RowConstraints percentHeight="50"/>
+                    <RowConstraints percentHeight="50"/>
+                </rowConstraints>
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="200"/>
+                </columnConstraints>
+                <padding>
+                    <Insets top="10" bottom="10" left="10" right="10"/>
+                </padding>
+
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="kontejner">
+                    <Label text="Předměty" styleClass="nadpis"/>
+                    <VBox fx:id="predmety" styleClass="text-maly"/>
+                </VBox>
+                <VBox  GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="kontejner">
+                    <Label text="Batoh" styleClass="nadpis"/>
+                    <VBox fx:id="batoh" styleClass="text-maly"/>
+                </VBox>
+
+
+            </GridPane>
+        </right>
     </BorderPane>
 
 

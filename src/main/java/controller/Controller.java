@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import logika.HerniPlan;
 import logika.IHra;
 import logika.Prostor;
+import logika.Vec;
 import okna.AlertBox;
 
 public class Controller {
@@ -32,7 +33,9 @@ public class Controller {
     @FXML
     private VBox vychody;
     @FXML
-    private VBox seznamPredmetuVMistnosti;
+    private VBox predmety;
+    @FXML
+    private VBox batoh;
 
     public void setHra(IHra hra) {
         this.hra = hra;
@@ -57,6 +60,7 @@ public class Controller {
 
             obrazekLokace.setImage(image);
             pridejVychody(prostor);
+            pridejPredmety(prostor);
 
         }
         else AlertBox.zobrazAlertBox("Oznámení",
@@ -64,7 +68,7 @@ public class Controller {
                         "abys mohl projít do další lokace, musíš ho porazit.");
 
 
-       // pridejPredmety(prostor);
+
     }
 
     private void pridejVychody(Prostor prostor) {
@@ -92,8 +96,95 @@ public class Controller {
     }
 
     public void pridejPredmety(Prostor prostor){
+        predmety.getChildren().clear();
+
+        for (Vec vec : prostor.getSeznamVeci()) {
+            pridejPredmetDoMistnosti(vec);
+        }
+
+    }
+
+    private void pridejPredmetDoMistnosti(Vec vec) {
+/*
+        HBox predmet = new HBox();
+        predmet.setSpacing(10);
+        predmet.setPadding(new Insets(3,3,3,3));
+        Label nazevPredmetu = new Label(vec.getNazev());
+
+        ImageView predmetImageView = new ImageView();
+        Image predmetImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + vec.getNazev() + ".jpg"));
+        predmetImageView.setFitHeight(VYSKA_IKONY);
+        predmetImageView.setFitWidth(SIRKA_IKONY);
+        predmetImageView.setImage(predmetImage);
 
 
+        predmet.getChildren().addAll(predmetImageView, nazevPredmetu);
+
+        predmety.getChildren().add(predmet);
+*/
+
+
+        HBox predmet = new HBox();
+        predmet.setSpacing(10);
+        predmet.setPadding(new Insets(3,3,3,3));
+
+        Label nazevPredmetu = new Label(vec.getNazev());
+
+        ImageView predmetImageView = new ImageView();
+        Image predmetImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + vec.getNazev() + ".jpg"));
+        predmetImageView.setFitHeight(VYSKA_IKONY);
+        predmetImageView.setFitWidth(SIRKA_IKONY);
+        predmetImageView.setImage(predmetImage);
+
+        predmet.getChildren().addAll(predmetImageView,nazevPredmetu);
+
+        predmety.getChildren().add(predmet);
+
+
+
+
+        /*Label nazevVeci = new Label(vec.getNazev());
+        predmety.getChildren().add(nazevVeci);
+        */
+
+
+        predmet.setOnMouseClicked(event -> {
+
+            if (vec.isPrenositelna()) {
+                hra.zpracujPrikaz("seber " + vec.getNazev());
+
+                HBox predmetVBatohu = new HBox();
+                predmetVBatohu.setSpacing(10);
+                predmetVBatohu.setPadding(new Insets(3,3,3,3));
+
+                Label vecVBatohu = new Label(vec.getNazev());
+                //batoh.getChildren().add(vecVBatohu);
+
+                ImageView predmetVBatohuImageView = new ImageView();
+                Image predmetVBatohuImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + vec.getNazev() + ".jpg"));
+                predmetVBatohuImageView.setFitHeight(VYSKA_IKONY);
+                predmetVBatohuImageView.setFitWidth(SIRKA_IKONY);
+                predmetVBatohuImageView.setImage(predmetVBatohuImage);
+
+                predmetVBatohu.getChildren().addAll(predmetVBatohuImageView,vecVBatohu);
+
+                batoh.getChildren().add(predmetVBatohu);
+                predmety.getChildren().remove(predmet);
+                hra.getBatoh().pridejVec(vec);
+
+                System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
+                System.out.println(hra.getBatoh().velikostBatohu());
+
+
+                predmetVBatohu.setOnMouseClicked(event1 -> {
+                    hra.zpracujPrikaz("odhod "+ vec.getNazev());
+                    batoh.getChildren().remove(predmetVBatohu);
+                    pridejPredmetDoMistnosti(vec);
+
+                });
+            }
+        });
+        //System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
     }
 
 

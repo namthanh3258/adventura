@@ -271,6 +271,9 @@ public class Prostor {
 
     public NPC odstranNpc (String nazevNpc) {return npcka.remove(nazevNpc);}
 
+    public Collection<Vec> getSeznamVeci() {
+        return veci.values();
+    }
 
 
     /*
