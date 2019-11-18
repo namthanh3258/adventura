@@ -3,6 +3,7 @@ package controller;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,11 +44,12 @@ public class Controller {
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
         zmenProstor(aktualniProstor);
     }
-
+    /*Podminka do toho ifu dole*/
+    //!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
+    //        || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
+    //        ||prostor.getNazev().equals(predchoziMistnost)
     private void zmenProstor(Prostor prostor) {
-        if(!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
-        || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
-        ||prostor.getNazev().equals(predchoziMistnost)
+        if(true
         ){
             predchoziMistnost = hra.getHerniPlan().getAktualniProstor().getNazev();
             hra.zpracujPrikaz("jdi " + prostor.getNazev());
@@ -150,7 +152,7 @@ public class Controller {
 
         predmet.setOnMouseClicked(event -> {
 
-            if (vec.isPrenositelna()) {
+            if (vec.isPrenositelna() && hra.getBatoh().velikostBatohu()!=5) {
                 hra.zpracujPrikaz("seber " + vec.getNazev());
 
                 HBox predmetVBatohu = new HBox();
@@ -180,8 +182,16 @@ public class Controller {
                     hra.zpracujPrikaz("odhod "+ vec.getNazev());
                     batoh.getChildren().remove(predmetVBatohu);
                     pridejPredmetDoMistnosti(vec);
+                    hra.getBatoh().vyberPredmet(vec.getNazev());
+                    System.out.println(hra.getBatoh().velikostBatohu());
+                    System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
 
                 });
+            } else if (hra.getBatoh().velikostBatohu() == 5) {
+                AlertBox.zobrazAlertBox("Oznámení", "Batoh je plný, pokud chceš předmět sebrat,\n" +
+                        "musíš nejprve uvolnit místo v batohu.");
+            } else if (vec.isPrenositelna()==false){
+                AlertBox.zobrazAlertBox("Oznámení", "Předmět nelze sebrat, protože je moc velký a těžký");
             }
         });
         //System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));

@@ -78,7 +78,7 @@ public class HerniPlan {
         Vec prazdna_rakev = new Vec("prazdna_rakev", false);
         Vec kouzelna_rostlina = new Vec("kouzelna_rostlina", true);
         Vec syrove_maso = new Vec("syrove_maso",true);
-        Vec obycejny_ker = new Vec("obecejny_ker", true);
+        Vec obycejny_ker = new Vec("obycejny_ker", true);
         Vec obrovsky_kamen = new Vec("obrovsky_kamen", false);
         Vec maly_klacik = new Vec("maly_klacik", true);
         Vec maly_nozik = new Vec("maly_nozik",true);
