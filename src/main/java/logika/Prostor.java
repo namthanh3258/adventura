@@ -276,6 +276,11 @@ public class Prostor {
     }
 
 
+    public Collection<NPC> getSeznamNPC() {
+        return npcka.values();
+    }
+
+
     /*
     public Map<String, NPC> getNpc() {
         return npcka;

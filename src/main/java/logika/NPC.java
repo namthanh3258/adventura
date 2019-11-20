@@ -29,5 +29,6 @@ public class NPC {
         this.nazev = nazev;
     }
 
+
 }
 

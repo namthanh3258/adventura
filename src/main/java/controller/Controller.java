@@ -10,10 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import logika.HerniPlan;
-import logika.IHra;
-import logika.Prostor;
-import logika.Vec;
+import logika.*;
 import okna.AlertBox;
 
 public class Controller {
@@ -37,6 +34,8 @@ public class Controller {
     private VBox predmety;
     @FXML
     private VBox batoh;
+    @FXML
+    private VBox npcVProstoru;
 
     public void setHra(IHra hra) {
         this.hra = hra;
@@ -63,6 +62,7 @@ public class Controller {
             obrazekLokace.setImage(image);
             pridejVychody(prostor);
             pridejPredmety(prostor);
+            pridejNPC(prostor);
 
         }
         else AlertBox.zobrazAlertBox("Oznámení",
@@ -87,7 +87,6 @@ public class Controller {
             vychodImageView.setFitWidth(SIRKA_IKONY);
             vychodImageView.setImage(vychodImage);
 
-
             vychod.getChildren().addAll(vychodImageView, nazevProstoru);
 
             vychody.getChildren().add(vychod);
@@ -95,6 +94,32 @@ public class Controller {
                 zmenProstor(p);
             });
         }
+    }
+
+    private void pridejNPC(Prostor prostor ){
+        npcVProstoru.getChildren().clear();
+        for (NPC npc : prostor.getSeznamNPC()){
+            pridejNPCDoMisnosti(npc);
+        }
+    }
+
+    private void pridejNPCDoMisnosti(NPC npc) {
+        HBox npcka = new HBox();
+        npcka.setSpacing(10);
+        npcka.setPadding(new Insets(3,3,3,3));
+
+        Label nazevNPC = new Label(npc.getNazev());
+
+        ImageView npcImageView = new ImageView();
+        Image npcImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + npc.getNazev() + ".jpg"));
+        npcImageView.setFitHeight(VYSKA_IKONY);
+        npcImageView.setFitWidth(SIRKA_IKONY);
+        npcImageView.setImage(npcImage);
+
+        npcka.getChildren().addAll(npcImageView,nazevNPC);
+
+        npcVProstoru.getChildren().add(npcka);
+
     }
 
     public void pridejPredmety(Prostor prostor){
@@ -124,8 +149,6 @@ public class Controller {
 
         predmety.getChildren().add(predmet);
 */
-
-
         HBox predmet = new HBox();
         predmet.setSpacing(10);
         predmet.setPadding(new Insets(3,3,3,3));
@@ -141,9 +164,6 @@ public class Controller {
         predmet.getChildren().addAll(predmetImageView,nazevPredmetu);
 
         predmety.getChildren().add(predmet);
-
-
-
 
         /*Label nazevVeci = new Label(vec.getNazev());
         predmety.getChildren().add(nazevVeci);
@@ -176,6 +196,8 @@ public class Controller {
 
                 System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
                 System.out.println(hra.getBatoh().velikostBatohu());
+                System.out.println(hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("uhh"));
+                System.out.println();
 
 
                 predmetVBatohu.setOnMouseClicked(event1 -> {
@@ -188,7 +210,7 @@ public class Controller {
 
                 });
             } else if (hra.getBatoh().velikostBatohu() == 5) {
-                AlertBox.zobrazAlertBox("Oznámení", "Batoh je plný, pokud chceš předmět sebrat,\n" +
+                AlertBox.zobrazAlertBox("Oznámení", "Batoh je plný. Pokud chceš předmět sebrat,\n" +
                         "musíš nejprve uvolnit místo v batohu.");
             } else if (vec.isPrenositelna()==false){
                 AlertBox.zobrazAlertBox("Oznámení", "Předmět nelze sebrat, protože je moc velký a těžký");
