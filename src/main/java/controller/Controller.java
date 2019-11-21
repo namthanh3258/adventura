@@ -19,6 +19,13 @@ import javafx.stage.Stage;
 import logika.*;
 import okna.AlertBox;
 
+/**
+ *  Třída slouží k ovládání grafické verze původní textové Adventury
+ *
+ *@author     Thanh Nam Nguyen
+ *@version    21.11.2019
+ */
+
 public class Controller {
 
     public static final int SIRKA_IKONY = 45;
@@ -58,7 +65,9 @@ public class Controller {
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
         zmenProstor(aktualniProstor);
     }
-
+    /**
+     *  Metoda sloužící k fungování jednotlivých tlačítek v menu liště
+     */
     private void menu(){
         novaHra.setOnAction(event -> {
             Hra novaHra = new Hra();
@@ -86,12 +95,14 @@ public class Controller {
         });
     }
 
-    /*Podminka do toho ifu dole*/
-    //!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
-    //        || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
-    //        ||prostor.getNazev().equals(predchoziMistnost)
+    /**
+     *  Tato metoda ma za úkol přepinat mezi jednotlivými lokacemi
+     *
+     */
     private void zmenProstor(Prostor prostor) {
-        if(true
+        if(!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
+                || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
+                ||prostor.getNazev().equals(predchoziMistnost)
         ){
             predchoziMistnost = hra.getHerniPlan().getAktualniProstor().getNazev();
             hra.zpracujPrikaz("jdi " + prostor.getNazev());
@@ -115,7 +126,9 @@ public class Controller {
 
 
     }
-
+    /**
+     *  Tato metoda přidává jednotlivé vychody, které jsou připojeny k aktuálním prostoru
+     */
     private void pridejVychody(Prostor prostor) {
         vychody.getChildren().clear();
         for (Prostor p : prostor.getVychody()) {
@@ -138,14 +151,19 @@ public class Controller {
             });
         }
     }
-
+    /**
+     *  Metoda přidáva jednotlivé npc, které se v aktuálním prostoru nachází
+     */
     private void pridejNPC(Prostor prostor ){
         npcVProstoru.getChildren().clear();
         for (NPC npc : prostor.getSeznamNPC()){
             pridejNPCDoMisnosti(npc);
         }
     }
-
+    /**
+     *  Metoda přidáva jednotlivé npc, které se v aktuálním prostoru nachází.
+     *  Druhá část metody umožňuje útočit na npc, u některých po jejich poražení dojde k vytvoření nového předmětu.
+     */
     private void pridejNPCDoMisnosti(NPC npc) {
         HBox npcBox = new HBox();
         npcBox.setSpacing(10);
@@ -162,8 +180,7 @@ public class Controller {
         npcBox.getChildren().addAll(npcImageView,nazevNPC);
 
         npcVProstoru.getChildren().add(npcBox);
-        System.out.println(hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("bandita"));
-        System.out.println(hra.getHerniPlan().getHp());
+
 
         npcBox.setOnMouseClicked(event -> {
             hra.zpracujPrikaz("utok " + npc.getNazev());
@@ -262,11 +279,12 @@ public class Controller {
                         " ale jen taktak utéct. Tvé aktuální HP je - [" + hra.getHerniPlan().getHp() + "]");
                 return;
             }
-            System.out.println("npc v prostoru bandita " + hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("bandita"));
         });
 
     }
-
+    /**
+     *  Metoda přidává předměty do prostoru
+     */
     public void pridejPredmety(Prostor prostor){
         predmety.getChildren().clear();
 
@@ -275,7 +293,10 @@ public class Controller {
         }
 
     }
-
+    /**
+     *  Metoda přidává předměty do prostoru
+     *  V druhé části metody je přídávání a odhazování věcí z batohu
+     */
     private void pridejPredmetDoMistnosti(Vec vec) {
 /*
         HBox predmet = new HBox();
@@ -339,10 +360,6 @@ public class Controller {
                 predmety.getChildren().remove(predmet);
                 hra.getBatoh().pridejVec(vec);
 
-                System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
-                System.out.println(hra.getBatoh().velikostBatohu());
-                System.out.println(hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("uhh"));
-                System.out.println("luk " + hra.getBatoh().obsahujeVec("luk"));
 
 
                 predmetVBatohu.setOnMouseClicked(event1 -> {
@@ -350,8 +367,7 @@ public class Controller {
                     batoh.getChildren().remove(predmetVBatohu);
                     pridejPredmetDoMistnosti(vec);
                     hra.getBatoh().vyberPredmet(vec.getNazev());
-                    System.out.println(hra.getBatoh().velikostBatohu());
-                    System.out.println("obsahuje mec " + hra.getBatoh().obsahujeVec("ocelovy_mec"));
+
 
                 });
             } else if (hra.getBatoh().velikostBatohu() == 6) {
