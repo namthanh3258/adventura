@@ -45,9 +45,10 @@ public class Controller {
 
     @FXML
     private MenuItem novaHra;
-
     @FXML
     private MenuItem napoveda;
+    @FXML
+    private MenuItem status;
 
 
 
@@ -56,30 +57,6 @@ public class Controller {
         HerniPlan herniPlan = hra.getHerniPlan();
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
         zmenProstor(aktualniProstor);
-    }
-
-    public void novaHra(ActionEvent event) {
-        Hra novaHra = new Hra();
-        AlertBox.zobrazAlertBox("Nová hra", "Spouští se nová hra.");
-        setHra(novaHra);
-    }
-
-    public void napoveda(ActionEvent event) {
-        Stage stage = new Stage();
-        stage.setTitle("Nápověda");
-        BorderPane root = new BorderPane();
-
-        WebView webView = new WebView();
-        WebEngine engine = webView.getEngine();
-        engine.load("https://www.google.com/");
-
-          /* WebView webview = new WebView();
-        WebEngine webengine = webview.getEngine();*/
-        root.getChildren().addAll(webView);
-
-        Scene scene = new Scene(root, 800, 500);
-        stage.setScene(scene);
-        stage.show();
     }
 
     private void menu(){
@@ -102,6 +79,10 @@ public class Controller {
             Scene scene = new Scene(layout, 800, 300);
             stage.setScene(scene);
             stage.show();
+        });
+        status.setOnAction(event -> {
+            AlertBox.zobrazAlertBox("Status","Tvé aktuální HP je - [" + hra.getHerniPlan().getHp() + "]\n" +
+                    "V tvém batohu je " + hra.getBatoh().velikostBatohu() + "/6 předmětů");
         });
     }
 

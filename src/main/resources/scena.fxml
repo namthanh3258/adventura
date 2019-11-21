@@ -75,11 +75,16 @@
       <top>
          <MenuBar BorderPane.alignment="CENTER">
            <menus>
-             <Menu mnemonicParsing="false" text="File">
+             <Menu mnemonicParsing="false" text="Hra">
                <items>
                  <MenuItem fx:id="novaHra" mnemonicParsing="false" text="Nová hra" />
                </items>
              </Menu>
+               <Menu mnemonicParsing="false" text="Info">
+                  <items>
+                     <MenuItem fx:id="status" mnemonicParsing="false" text="Status" />
+                  </items>
+               </Menu>
              <Menu mnemonicParsing="false" text="Nápověda">
                <items>
                  <MenuItem fx:id="napoveda" mnemonicParsing="false" text="About" />
