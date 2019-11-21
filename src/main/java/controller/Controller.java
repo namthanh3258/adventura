@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -141,6 +142,65 @@ public class Controller {
             else if(npc.getNazev().equals("medved") && hra.getBatoh().obsahujeVec("luk") && hra.getBatoh().obsahujeVec("sipy")){
                 AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
                 npcVProstoru.getChildren().clear();
+            } else if (npc.getNazev().equals("kral")) {
+                AlertBox.zobrazAlertBox("Oznámení", "Pokusil ses zabít krále, byl si popraven za zradu." +
+                        " Díky, že jste si zahráli.");
+                Platform.exit();
+            } else if(npc.getNazev().equals("zly_rytir") && hra.getBatoh().obsahujeVec("ocelovy_mec")){
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+
+            } else if(npc.getNazev().equals("utopenec") && hra.getBatoh().obsahujeVec("stribrny_mec")){
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+
+                Vec dreveny_kul = new Vec("dreveny_kul",true);
+                hra.getHerniPlan().getAktualniProstor().pridejVec(dreveny_kul);
+                pridejPredmetDoMistnosti(dreveny_kul);
+
+            } else if(npc.getNazev().equals("upir") && hra.getBatoh().obsahujeVec("dreveny_kul") && hra.getBatoh().obsahujeVec("cesnek")){
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+
+                Vec kniha_se_zaklinadly = new Vec("kniha_se_zaklinadly",true);
+                hra.getHerniPlan().getAktualniProstor().pridejVec(kniha_se_zaklinadly);
+                pridejPredmetDoMistnosti(kniha_se_zaklinadly);
+
+            } else if (npc.getNazev().equals("vlkodlak") && hra.getBatoh().obsahujeVec("stribrny_mec")){
+
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+
+            } else if (npc.getNazev().equals("zaklety_rytir") && hra.getBatoh().obsahujeVec("kniha_se_zaklinadly") ){
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+
+                Vec kouzelne_brneni = new Vec("kouzelne_brneni", true);
+                hra.getHerniPlan().getAktualniProstor().pridejVec(kouzelne_brneni);
+                pridejPredmetDoMistnosti(kouzelne_brneni);
+
+            } else if (npc.getNazev().equals("Gul_Dan") && hra.getBatoh().obsahujeVec("stribrny_mec")
+                && hra.getBatoh().obsahujeVec("dreveny_kul")
+                && hra.getBatoh().obsahujeVec("cesnek")
+                && hra.getBatoh().obsahujeVec("kouzelna_rostlina")
+                && hra.getBatoh().obsahujeVec("kniha_se_zaklinadly")
+                && hra.getBatoh().obsahujeVec("kouzelne_brneni")){
+
+                AlertBox.zobrazAlertBox("Oznámení", "Dokázal si porazit si Gul'Dana! Nyní musíš najít princeznu.");
+                npcVProstoru.getChildren().clear();
+
+                Vec klic = new Vec("klic", true);
+                hra.getHerniPlan().getAktualniProstor().pridejVec(klic);
+                pridejPredmetDoMistnosti(klic);
+
+            } else if(npc.getNazev().equals("princezna") && hra.getBatoh().obsahujeVec("klic")){
+                AlertBox.zobrazAlertBox("Oznámení", "Povedlo se ti zachránit princeznu ze spáru Gul'Dana " +
+                        "a bezpečně dopravit zpět do království.");
+                npcVProstoru.getChildren().clear();
+            }else if(npc.getNazev().equals("princezna") && !hra.getBatoh().obsahujeVec("klic")){
+                AlertBox.zobrazAlertBox("Oznámení", "Musíš nejprve najít klíč od princeziny cely, " +
+                        "aby si ji mohl zachránit.");
+                npcVProstoru.getChildren().clear();
             }
 
             else {
@@ -204,7 +264,7 @@ public class Controller {
 
         predmet.setOnMouseClicked(event -> {
 
-            if (vec.isPrenositelna() && hra.getBatoh().velikostBatohu()!=5) {
+            if (vec.isPrenositelna() && hra.getBatoh().velikostBatohu()!=6) {
                 hra.zpracujPrikaz("seber " + vec.getNazev());
 
                 HBox predmetVBatohu = new HBox();
@@ -241,7 +301,7 @@ public class Controller {
                     System.out.println("obsahuje mec " + hra.getBatoh().obsahujeVec("ocelovy_mec"));
 
                 });
-            } else if (hra.getBatoh().velikostBatohu() == 5) {
+            } else if (hra.getBatoh().velikostBatohu() == 6) {
                 AlertBox.zobrazAlertBox("Oznámení", "Batoh je plný. Pokud chceš předmět sebrat,\n" +
                         "musíš nejprve uvolnit místo v batohu.");
             } else if (vec.isPrenositelna()==false){
