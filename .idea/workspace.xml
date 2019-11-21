@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="befd61f0-a845-4060-bf65-8c30afa77c7d" name="Default Changelist" comment="">
+    <list default="true" id="befd61f0-a845-4060-bf65-8c30afa77c7d" name="Default Changelist" comment="Pridany npc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logika/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logika/NPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logika/Prostor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logika/Prostor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/zly_rytir.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/zly_rytir.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logika/Prostor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logika/Prostor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,11 +20,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-573">
-              <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+            <state relative-caret-position="231">
+              <caret line="146" column="44" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/logika/PrikazUtok.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -41,26 +50,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logika/NPC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
+            <state relative-caret-position="315">
               <caret line="30" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logika/Prostor.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/logika/HerniPlan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="278" column="36" selection-start-line="278" selection-start-column="36" selection-end-line="278" selection-end-column="36" />
+            <state relative-caret-position="91">
+              <caret line="151" column="23" lean-forward="true" selection-start-line="151" selection-start-column="23" selection-end-line="151" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logika/HerniPlan.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/logika/Postava.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="109" column="45" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
+            <state relative-caret-position="63">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -75,28 +84,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logika/PrikazUtok.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/scena.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="223">
               <caret line="48" column="39" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="45" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logika/Hra.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2136">
+            <state relative-caret-position="2184">
               <caret line="112" column="4" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="4" />
             </state>
           </provider>
@@ -105,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logika/Batoh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
+            <state relative-caret-position="1071">
               <caret line="58" selection-start-line="58" selection-end-line="64" selection-end-column="5" />
             </state>
           </provider>
@@ -124,6 +124,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>veci</find>
+      <find>sethp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,9 +146,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/scena.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/logika/IHra.java" />
         <option value="$PROJECT_DIR$/src/main/java/logika/Hra.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logika/HerniPlan.java" />
         <option value="$PROJECT_DIR$/src/main/java/logika/Prostor.java" />
         <option value="$PROJECT_DIR$/src/main/java/logika/NPC.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logika/PrikazUtok.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logika/HerniPlan.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Controller.java" />
       </list>
     </option>
@@ -236,6 +238,14 @@
               <item name="adventura" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="okna" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="adventura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="adventura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,7 +261,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574254839348" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574322240429" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -336,14 +346,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574074552112</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Pridany npc">
+      <created>1574254861297</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574254861297</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18710022" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18993288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -352,8 +369,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24918744" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24787535" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.30736545" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -407,7 +424,8 @@
     <MESSAGE value="Lze pridavat predmety do batohu" />
     <MESSAGE value="Pridany obrazky, alertboxy" />
     <MESSAGE value="Pridany obrazky" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pridany obrazky" />
+    <MESSAGE value="Pridany npc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pridany npc" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/logika/ProstorTest.java">
@@ -427,13 +445,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logika/Postava.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -541,17 +552,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logika/PrikazUtok.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logika/Prostor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logika/Hra.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2136">
-          <caret line="112" column="4" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="4" />
+        <state relative-caret-position="5439">
+          <caret line="278" column="36" selection-start-line="278" selection-start-column="36" selection-end-line="278" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -562,18 +566,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/scena.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logika/Hra.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="48" column="39" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="45" />
+        <state relative-caret-position="2184">
+          <caret line="112" column="4" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="4" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logika/Batoh.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
+        <state relative-caret-position="1071">
           <caret line="58" selection-start-line="58" selection-end-line="64" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logika/NPC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
@@ -584,34 +594,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logika/NPC.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/scena.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="223">
+          <caret line="48" column="39" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="45" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logika/Postava.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logika/Prostor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logika/HerniPlan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="278" column="36" selection-start-line="278" selection-start-column="36" selection-end-line="278" selection-end-column="36" />
+        <state relative-caret-position="91">
+          <caret line="151" column="23" lean-forward="true" selection-start-line="151" selection-start-column="23" selection-end-line="151" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-573">
-          <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+        <state relative-caret-position="231">
+          <caret line="146" column="44" selection-start-line="146" selection-start-column="44" selection-end-line="146" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logika/HerniPlan.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/logika/PrikazUtok.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="109" column="45" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
+        <state relative-caret-position="520">
+          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
         </state>
       </provider>
     </entry>

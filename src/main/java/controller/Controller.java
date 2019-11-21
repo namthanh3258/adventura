@@ -104,9 +104,9 @@ public class Controller {
     }
 
     private void pridejNPCDoMisnosti(NPC npc) {
-        HBox npcka = new HBox();
-        npcka.setSpacing(10);
-        npcka.setPadding(new Insets(3,3,3,3));
+        HBox npcBox = new HBox();
+        npcBox.setSpacing(10);
+        npcBox.setPadding(new Insets(3,3,3,3));
 
         Label nazevNPC = new Label(npc.getNazev());
 
@@ -116,9 +116,41 @@ public class Controller {
         npcImageView.setFitWidth(SIRKA_IKONY);
         npcImageView.setImage(npcImage);
 
-        npcka.getChildren().addAll(npcImageView,nazevNPC);
+        npcBox.getChildren().addAll(npcImageView,nazevNPC);
 
-        npcVProstoru.getChildren().add(npcka);
+        npcVProstoru.getChildren().add(npcBox);
+        System.out.println(hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("bandita"));
+        System.out.println(hra.getHerniPlan().getHp());
+
+        npcBox.setOnMouseClicked(event -> {
+            hra.zpracujPrikaz("utok " + npc.getNazev());
+            if (npc.getNazev().equals("bandita")&& hra.getBatoh().obsahujeVec("ocelovy_mec")){
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+
+                Vec luk = new Vec("luk", true);
+                Vec sipy = new Vec("sipy", true);
+
+                hra.getHerniPlan().getAktualniProstor().pridejVec(luk);
+                hra.getHerniPlan().getAktualniProstor().pridejVec(sipy);
+
+                pridejPredmetDoMistnosti(luk);
+                pridejPredmetDoMistnosti(sipy);
+
+            }
+            else if(npc.getNazev().equals("medved") && hra.getBatoh().obsahujeVec("luk") && hra.getBatoh().obsahujeVec("sipy")){
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
+                npcVProstoru.getChildren().clear();
+            }
+
+            else {
+                System.out.println("sethp");
+                AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti nepodařilo porazit, povedlo se ti," +
+                        " ale jen taktak utéct. Tvé aktuální HP je - [" + hra.getHerniPlan().getHp() + "]");
+                return;
+            }
+            System.out.println("npc v prostoru bandita " + hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("bandita"));
+        });
 
     }
 
@@ -197,7 +229,7 @@ public class Controller {
                 System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
                 System.out.println(hra.getBatoh().velikostBatohu());
                 System.out.println(hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("uhh"));
-                System.out.println();
+                System.out.println("luk " + hra.getBatoh().obsahujeVec("luk"));
 
 
                 predmetVBatohu.setOnMouseClicked(event1 -> {
@@ -206,7 +238,7 @@ public class Controller {
                     pridejPredmetDoMistnosti(vec);
                     hra.getBatoh().vyberPredmet(vec.getNazev());
                     System.out.println(hra.getBatoh().velikostBatohu());
-                    System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
+                    System.out.println("obsahuje mec " + hra.getBatoh().obsahujeVec("ocelovy_mec"));
 
                 });
             } else if (hra.getBatoh().velikostBatohu() == 5) {
