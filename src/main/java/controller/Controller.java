@@ -1,16 +1,21 @@
 package controller;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import logika.*;
 import okna.AlertBox;
 
@@ -38,12 +43,68 @@ public class Controller {
     @FXML
     private VBox npcVProstoru;
 
+    @FXML
+    private MenuItem novaHra;
+
+    @FXML
+    private MenuItem napoveda;
+
+
+
     public void setHra(IHra hra) {
         this.hra = hra;
         HerniPlan herniPlan = hra.getHerniPlan();
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
         zmenProstor(aktualniProstor);
     }
+
+    public void novaHra(ActionEvent event) {
+        Hra novaHra = new Hra();
+        AlertBox.zobrazAlertBox("Nová hra", "Spouští se nová hra.");
+        setHra(novaHra);
+    }
+
+    public void napoveda(ActionEvent event) {
+        Stage stage = new Stage();
+        stage.setTitle("Nápověda");
+        BorderPane root = new BorderPane();
+
+        WebView webView = new WebView();
+        WebEngine engine = webView.getEngine();
+        engine.load("https://www.google.com/");
+
+          /* WebView webview = new WebView();
+        WebEngine webengine = webview.getEngine();*/
+        root.getChildren().addAll(webView);
+
+        Scene scene = new Scene(root, 800, 500);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void menu(){
+        novaHra.setOnAction(event -> {
+            Hra novaHra = new Hra();
+            AlertBox.zobrazAlertBox("Nová hra", "Spouští se nová hra.");
+            setHra(novaHra);
+        });
+        napoveda.setOnAction(event -> {
+            Stage stage = new Stage();
+            stage.setTitle("Nápověda");
+            StackPane layout = new StackPane();
+
+            WebView webView = new WebView();
+            WebEngine engine = webView.getEngine();
+
+            engine.load(String.valueOf(getClass().getResource("/about.html")));
+            layout.getChildren().add(webView);
+
+            Scene scene = new Scene(layout, 800, 300);
+            stage.setScene(scene);
+            stage.show();
+        });
+    }
+
     /*Podminka do toho ifu dole*/
     //!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
     //        || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
@@ -64,7 +125,7 @@ public class Controller {
             pridejVychody(prostor);
             pridejPredmety(prostor);
             pridejNPC(prostor);
-
+            menu();
         }
         else AlertBox.zobrazAlertBox("Oznámení",
                 "V oblasti se stále nachází nějaké NPC, \n" +
@@ -145,6 +206,7 @@ public class Controller {
             } else if (npc.getNazev().equals("kral")) {
                 AlertBox.zobrazAlertBox("Oznámení", "Pokusil ses zabít krále, byl si popraven za zradu." +
                         " Díky, že jste si zahráli.");
+                hra.konecHry();
                 Platform.exit();
             } else if(npc.getNazev().equals("zly_rytir") && hra.getBatoh().obsahujeVec("ocelovy_mec")){
                 AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti podařilo porazit.");
@@ -197,6 +259,7 @@ public class Controller {
                 AlertBox.zobrazAlertBox("Oznámení", "Povedlo se ti zachránit princeznu ze spáru Gul'Dana " +
                         "a bezpečně dopravit zpět do království.");
                 npcVProstoru.getChildren().clear();
+                hra.konecHry();
             }else if(npc.getNazev().equals("princezna") && !hra.getBatoh().obsahujeVec("klic")){
                 AlertBox.zobrazAlertBox("Oznámení", "Musíš nejprve najít klíč od princeziny cely, " +
                         "aby si ji mohl zachránit.");
@@ -205,6 +268,15 @@ public class Controller {
 
             else {
                 System.out.println("sethp");
+                if (hra.getHerniPlan().getHp() == 0){
+                    hra.konecHry();
+                    AlertBox.zobrazAlertBox("Zemřel si", "Zemřel si během plněni tvého úkolu. " +
+                            "Třeba se ti to povede příště.");
+                    Hra novaHra = new Hra();
+                    AlertBox.zobrazAlertBox("Nová hra", "Spouští se nová hra.");
+                    setHra(novaHra);
+                    return;
+                }
                 AlertBox.zobrazAlertBox("Oznámení", "NPC " + npc.getNazev() + " se ti nepodařilo porazit, povedlo se ti," +
                         " ale jen taktak utéct. Tvé aktuální HP je - [" + hra.getHerniPlan().getHp() + "]");
                 return;

@@ -1,52 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="720.0" prefWidth="1280.0"
-           xmlns="http://javafx.com/javafx/11.0.1"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="controller.Controller"
-           stylesheets="/style.css"
->
+<StackPane prefHeight="720.0" prefWidth="1280.0" stylesheets="/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
     <ImageView fx:id="obrazekLokace" />
     <BorderPane>
         <bottom>
-            <VBox alignment="CENTER" styleClass="kontejner" prefHeight="100">
-                <Label fx:id="nazevLokace" styleClass="velky-nadpis"/>
-                <Label fx:id="popisLokace" styleClass="text-velky"/>
+            <VBox alignment="CENTER" prefHeight="100" styleClass="kontejner">
+                <Label fx:id="nazevLokace" styleClass="velky-nadpis" />
+                <Label fx:id="popisLokace" styleClass="text-velky" />
             </VBox>
         </bottom>
         <left>
             <GridPane vgap="10">
                 <rowConstraints>
-                    <RowConstraints percentHeight="50"/>
-                    <RowConstraints percentHeight="50"/>
+                    <RowConstraints percentHeight="50.0" />
+                    <RowConstraints percentHeight="50.0" />
                 </rowConstraints>
                 <columnConstraints>
-                    <ColumnConstraints prefWidth="200"/>
+                    <ColumnConstraints prefWidth="200" />
                 </columnConstraints>
                 <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
+                    <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
 
-                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="kontejner">
-                    <Label text="Východy" styleClass="nadpis"/>
-                    <VBox fx:id="vychody" styleClass="text-maly"/>
+                <VBox styleClass="kontejner">
+                    <Label styleClass="nadpis" text="Východy" />
+                    <VBox fx:id="vychody" styleClass="text-maly" />
                 </VBox>
-                <VBox  GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="kontejner">
-                    <Label text="NPC" styleClass="nadpis"/>
-                    <VBox fx:id="npcVProstoru" styleClass="text-maly"/>
+                <VBox styleClass="kontejner" GridPane.rowIndex="1">
+                    <Label styleClass="nadpis" text="NPC" />
+                    <VBox fx:id="npcVProstoru" styleClass="text-maly" />
                 </VBox>
 
 
@@ -55,28 +50,44 @@
         <right>
             <GridPane vgap="10">
                 <rowConstraints>
-                    <RowConstraints percentHeight="50"/>
-                    <RowConstraints percentHeight="50"/>
+                    <RowConstraints percentHeight="50" />
+                    <RowConstraints percentHeight="50" />
                 </rowConstraints>
                 <columnConstraints>
-                    <ColumnConstraints prefWidth="200"/>
+                    <ColumnConstraints prefWidth="200" />
                 </columnConstraints>
                 <padding>
-                    <Insets top="10" bottom="10" left="10" right="10"/>
+                    <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
 
-                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="kontejner">
-                    <Label text="Předměty" styleClass="nadpis"/>
-                    <VBox fx:id="predmety" styleClass="text-maly"/>
+                <VBox styleClass="kontejner" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label styleClass="nadpis" text="Předměty" />
+                    <VBox fx:id="predmety" styleClass="text-maly" />
                 </VBox>
-                <VBox  GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="kontejner">
-                    <Label text="Batoh" styleClass="nadpis"/>
-                    <VBox fx:id="batoh" styleClass="text-maly"/>
+                <VBox styleClass="kontejner" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label styleClass="nadpis" text="Batoh" />
+                    <VBox fx:id="batoh" styleClass="text-maly" />
                 </VBox>
 
 
             </GridPane>
         </right>
+      <top>
+         <MenuBar BorderPane.alignment="CENTER">
+           <menus>
+             <Menu mnemonicParsing="false" text="File">
+               <items>
+                 <MenuItem fx:id="novaHra" mnemonicParsing="false" text="Nová hra" />
+               </items>
+             </Menu>
+             <Menu mnemonicParsing="false" text="Nápověda">
+               <items>
+                 <MenuItem fx:id="napoveda" mnemonicParsing="false" text="About" />
+               </items>
+             </Menu>
+           </menus>
+         </MenuBar>
+      </top>
     </BorderPane>
 
 
