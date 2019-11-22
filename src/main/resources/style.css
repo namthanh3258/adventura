@@ -12,8 +12,10 @@
     -fx-font-weight:bold;
 }
 
-.text-maly{
+.text-maly .label{
     -fx-font-size:18;
+    -fx-text-fill: black;
+    -fx-font-weight: 100;
 }
 
 .text-velky{
@@ -23,4 +25,8 @@
 .velky-nadpis {
     -fx-font-size: 30;
     -fx-font-weight:bold;
+}
+
+.scroll-pane {
+    -fx-background: rgba(255,255, 255, 0.4);
 }

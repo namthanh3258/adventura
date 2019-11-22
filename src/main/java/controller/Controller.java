@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -56,6 +57,9 @@ public class Controller {
     private MenuItem napoveda;
     @FXML
     private MenuItem status;
+
+    @FXML
+    private ScrollPane scrollPane;
 
 
 
@@ -318,7 +322,7 @@ public class Controller {
         HBox predmet = new HBox();
         predmet.setSpacing(10);
         predmet.setPadding(new Insets(3,3,3,3));
-
+        scrollPane.setStyle("-fx-background: transparent;");
         Label nazevPredmetu = new Label(vec.getNazev());
 
         ImageView predmetImageView = new ImageView();
@@ -338,7 +342,11 @@ public class Controller {
 
         predmet.setOnMouseClicked(event -> {
 
-            if (vec.isPrenositelna() && hra.getBatoh().velikostBatohu()!=6) {
+            if (vec.isPrenositelna() || hra.getBatoh().velikostBatohu()!=6
+                    || !hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor() == false
+                    || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
+            )
+            {
                 hra.zpracujPrikaz("seber " + vec.getNazev());
 
                 HBox predmetVBatohu = new HBox();
