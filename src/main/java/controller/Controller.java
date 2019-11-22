@@ -342,9 +342,8 @@ public class Controller {
 
         predmet.setOnMouseClicked(event -> {
 
-            if (vec.isPrenositelna() || hra.getBatoh().velikostBatohu()!=6
-                    || !hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor() == false
-                    || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")
+            if (vec.isPrenositelna() && hra.getBatoh().velikostBatohu()!=6
+
             )
             {
                 hra.zpracujPrikaz("seber " + vec.getNazev());
