@@ -76,6 +76,7 @@ public class Controller {
         novaHra.setOnAction(event -> {
             Hra novaHra = new Hra();
             AlertBox.zobrazAlertBox("Nová hra", "Spouští se nová hra.");
+            batoh.getChildren().clear();
             setHra(novaHra);
         });
         napoveda.setOnAction(event -> {
@@ -101,7 +102,7 @@ public class Controller {
 
     /**
      *  Tato metoda ma za úkol přepinat mezi jednotlivými lokacemi
-     *
+     * @param prostor ze, kterého se získávají vedlejší prostory
      */
     private void zmenProstor(Prostor prostor) {
         if(!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
@@ -132,6 +133,7 @@ public class Controller {
     }
     /**
      *  Tato metoda přidává jednotlivé vychody, které jsou připojeny k aktuálním prostoru
+     * @param prostor, ze kterého se získávají vedlejší prostory
      */
     private void pridejVychody(Prostor prostor) {
         vychody.getChildren().clear();
@@ -165,8 +167,9 @@ public class Controller {
         }
     }
     /**
-     *  Metoda přidáva jednotlivé npc, které se v aktuálním prostoru nachází.
+     *  Metoda vytváří HBox s názvem a obrázkem pro jednotlivé npc
      *  Druhá část metody umožňuje útočit na npc, u některých po jejich poražení dojde k vytvoření nového předmětu.
+     * @param npc ze, kterého se získávají informace o určitém npc
      */
     private void pridejNPCDoMisnosti(NPC npc) {
         HBox npcBox = new HBox();
@@ -288,6 +291,7 @@ public class Controller {
     }
     /**
      *  Metoda přidává předměty do prostoru
+     * @param prostor pomocí tohoto parametru se zjištují, které předměty se nacházejí v aktuálním prostoru
      */
     public void pridejPredmety(Prostor prostor){
         predmety.getChildren().clear();
@@ -298,27 +302,12 @@ public class Controller {
 
     }
     /**
-     *  Metoda přidává předměty do prostoru
+     *  Metoda vytváří HBox s názvem a obrázkem pro jednotlivé předměty
      *  V druhé části metody je přídávání a odhazování věcí z batohu
+     * @param vec získává informace o jednotlivých předmětech
      */
     private void pridejPredmetDoMistnosti(Vec vec) {
-/*
-        HBox predmet = new HBox();
-        predmet.setSpacing(10);
-        predmet.setPadding(new Insets(3,3,3,3));
-        Label nazevPredmetu = new Label(vec.getNazev());
 
-        ImageView predmetImageView = new ImageView();
-        Image predmetImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + vec.getNazev() + ".jpg"));
-        predmetImageView.setFitHeight(VYSKA_IKONY);
-        predmetImageView.setFitWidth(SIRKA_IKONY);
-        predmetImageView.setImage(predmetImage);
-
-
-        predmet.getChildren().addAll(predmetImageView, nazevPredmetu);
-
-        predmety.getChildren().add(predmet);
-*/
         HBox predmet = new HBox();
         predmet.setSpacing(10);
         predmet.setPadding(new Insets(3,3,3,3));
@@ -335,48 +324,45 @@ public class Controller {
 
         predmety.getChildren().add(predmet);
 
-        /*Label nazevVeci = new Label(vec.getNazev());
-        predmety.getChildren().add(nazevVeci);
-        */
-
-
         predmet.setOnMouseClicked(event -> {
 
             if (vec.isPrenositelna() && hra.getBatoh().velikostBatohu()!=6
-
             )
             {
-                hra.zpracujPrikaz("seber " + vec.getNazev());
+                if(!hra.getHerniPlan().getAktualniProstor().nejakeNpcVProstor()
+                        || hra.getHerniPlan().getAktualniProstor().npcJeVProstoru("kral")) {
+                    hra.zpracujPrikaz("seber " + vec.getNazev());
 
-                HBox predmetVBatohu = new HBox();
-                predmetVBatohu.setSpacing(10);
-                predmetVBatohu.setPadding(new Insets(3,3,3,3));
+                    HBox predmetVBatohu = new HBox();
+                    predmetVBatohu.setSpacing(10);
+                    predmetVBatohu.setPadding(new Insets(3, 3, 3, 3));
 
-                Label vecVBatohu = new Label(vec.getNazev());
-                //batoh.getChildren().add(vecVBatohu);
+                    Label vecVBatohu = new Label(vec.getNazev());
+                    //batoh.getChildren().add(vecVBatohu);
 
-                ImageView predmetVBatohuImageView = new ImageView();
-                Image predmetVBatohuImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + vec.getNazev() + ".jpg"));
-                predmetVBatohuImageView.setFitHeight(VYSKA_IKONY);
-                predmetVBatohuImageView.setFitWidth(SIRKA_IKONY);
-                predmetVBatohuImageView.setImage(predmetVBatohuImage);
+                    ImageView predmetVBatohuImageView = new ImageView();
+                    Image predmetVBatohuImage = new Image(getClass().getClassLoader().getResourceAsStream("\\" + vec.getNazev() + ".jpg"));
+                    predmetVBatohuImageView.setFitHeight(VYSKA_IKONY);
+                    predmetVBatohuImageView.setFitWidth(SIRKA_IKONY);
+                    predmetVBatohuImageView.setImage(predmetVBatohuImage);
 
-                predmetVBatohu.getChildren().addAll(predmetVBatohuImageView,vecVBatohu);
+                    predmetVBatohu.getChildren().addAll(predmetVBatohuImageView, vecVBatohu);
 
-                batoh.getChildren().add(predmetVBatohu);
-                predmety.getChildren().remove(predmet);
-                hra.getBatoh().pridejVec(vec);
-
-
-
-                predmetVBatohu.setOnMouseClicked(event1 -> {
-                    hra.zpracujPrikaz("odhod "+ vec.getNazev());
-                    batoh.getChildren().remove(predmetVBatohu);
-                    pridejPredmetDoMistnosti(vec);
-                    hra.getBatoh().vyberPredmet(vec.getNazev());
+                    batoh.getChildren().add(predmetVBatohu);
+                    predmety.getChildren().remove(predmet);
+                    hra.getBatoh().pridejVec(vec);
 
 
-                });
+                    predmetVBatohu.setOnMouseClicked(event1 -> {
+                        hra.zpracujPrikaz("odhod " + vec.getNazev());
+                        batoh.getChildren().remove(predmetVBatohu);
+                        pridejPredmetDoMistnosti(vec);
+                        hra.getBatoh().vyberPredmet(vec.getNazev());
+                    });
+                }else{
+                    AlertBox.zobrazAlertBox("Oznámení", "Předmět nelze sebrat jelikož se v prostoru" +
+                            "stále náchazí nějaký nepřítel.\nMusíš ho nejprve porazit.");
+                }
             } else if (hra.getBatoh().velikostBatohu() == 6) {
                 AlertBox.zobrazAlertBox("Oznámení", "Batoh je plný. Pokud chceš předmět sebrat,\n" +
                         "musíš nejprve uvolnit místo v batohu.");
@@ -384,9 +370,6 @@ public class Controller {
                 AlertBox.zobrazAlertBox("Oznámení", "Předmět nelze sebrat, protože je moc velký a těžký");
             }
         });
-        //System.out.println(hra.getBatoh().obsahujeVec("ocelovy_mec"));
     }
-
-
 
 }

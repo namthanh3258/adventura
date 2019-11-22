@@ -52,7 +52,7 @@ public class Start extends Application
         Controller controller = loader.getController();
         controller.setHra(hra);
 
-        primaryStage.setTitle("Nazev hry");
+        primaryStage.setTitle("Záchrana princezny");
         InputStream iconStream = getClass().getResourceAsStream("/ikona.png");
         Image icon = new Image(iconStream);
         primaryStage.getIcons().add(icon);
