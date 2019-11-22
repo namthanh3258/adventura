@@ -2,9 +2,6 @@
   <artifact type="jar" name="Adventura_GUI:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Adventura_GUI_jar</output-path>
     <root id="archive" name="Adventura_GUI.jar">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
-      </element>
       <element id="module-output" name="Adventura_GUI" />
     </root>
   </artifact>

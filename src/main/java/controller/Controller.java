@@ -101,7 +101,7 @@ public class Controller {
     }
 
     /**
-     *  Tato metoda ma za úkol přepinat mezi jednotlivými lokacemi
+     *  Tato metoda ma za úkol přepinat mezi jednotlivými lokacemi a přidávat do nich předmety a npc
      * @param prostor ze, kterého se získávají vedlejší prostory
      */
     private void zmenProstor(Prostor prostor) {
@@ -132,7 +132,7 @@ public class Controller {
 
     }
     /**
-     *  Tato metoda přidává jednotlivé vychody, které jsou připojeny k aktuálním prostoru
+     *  Tato metoda přidává jednotlivé vychody do HBoxu společně s názvem a jménem
      * @param prostor, ze kterého se získávají vedlejší prostory
      */
     private void pridejVychody(Prostor prostor) {
